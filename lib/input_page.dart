@@ -2,11 +2,7 @@ import 'package:bmicalculator/resuable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
-
-const bottomContainerHeight = 80.0;
-const activecardColour = Color(0xFF1D1E33);
-const inactiveCardColour = Color(0xFF111328);
-const bottomContainerColour = Color(0xFFEB1555);
+import 'constants.dart';
 
 enum Gender {
   male,
@@ -42,7 +38,9 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     child: ReusableCard(
-                      selectedGender == Gender.male ? activecardColour : inactiveCardColour,
+                      selectedGender == Gender.male
+                          ? activecardColour
+                          : inactiveCardColour,
                       IconContent(
                         FontAwesomeIcons.mars,
                         'MALE',
@@ -54,11 +52,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        selectedGender == Gender.female ? activecardColour : inactiveCardColour;
+                        selectedGender = Gender.female;
                       });
                     },
                     child: ReusableCard(
-                      activecardColour,
+                      selectedGender == Gender.female
+                          ? activecardColour
+                          : inactiveCardColour,
                       IconContent(
                         FontAwesomeIcons.venus,
                         'FEMALE',
@@ -71,7 +71,10 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: Expanded(
-              child: ReusableCard(activecardColour),
+              child: ReusableCard(
+                activecardColour,
+                Column(children: [],),
+              ),
             ),
           ),
           Expanded(
