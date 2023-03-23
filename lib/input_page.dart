@@ -8,6 +8,7 @@ import 'icon_content.dart';
 enum Gender {
   male,
   female,
+  other
 }
 
 class InputPage extends StatefulWidget {
