@@ -1,7 +1,6 @@
 import 'package:bmicalculator/resuable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'constants.dart';
 import 'icon_content.dart';
 
@@ -21,6 +20,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 180;
+  int weight = 60;
+  int age = 19;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,6 @@ class _InputPageState extends State<InputPage> {
             child: Center(child: Text("Button"))),
       ),
       body: ListView(
-        // crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
             children: [
@@ -100,6 +100,7 @@ class _InputPageState extends State<InputPage> {
                     'HEIGHT',
                     style: kLabelTextStyle,
                   ),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -140,28 +141,99 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Container(
-            height: 300,
+            height: 255,
             child: Row(
               children: [
                 Expanded(
                   child: ReusableCard(
-                      kActivecardColour,
-                      Container(
-                        child: Center(child: Text("Reusable card1")),
-                      )),
+                    kActivecardColour,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              FontAwesomeIcons.plus,
+                            ),
+                            SizedBox(width: 10),
+                            RoundIconButton(
+                              FontAwesomeIcons.minus,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                      kActivecardColour,
-                      Container(
-                        child: Center(child: Text("Reusable card2")),
-                      )),
+                    kActivecardColour,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'AGE',
+                          style: kLabelTextStyle,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          age.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              FontAwesomeIcons.minus,
+                            ),
+                            SizedBox(width: 10),
+                            RoundIconButton(
+                              FontAwesomeIcons.plus,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  const RoundIconButton(this.icon, this.onPressed);
+
+  final IconData icon;
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      onPressed: () {},
+      child: Icon(icon),
+      constraints: BoxConstraints.tightFor(
+        width: 56,
+        height: 56,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
