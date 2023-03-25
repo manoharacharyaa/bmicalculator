@@ -1,13 +1,12 @@
 import 'package:bmicalculator/resuable_card.dart';
+import 'package:bmicalculator/widgets/build_round_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'constants.dart';
 import 'icon_content.dart';
 
-enum Gender {
-  male,
-  female,
-}
+enum Gender { male, female, other }
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -21,6 +20,18 @@ class _InputPageState extends State<InputPage> {
   int height = 180;
   int weight = 60;
   int age = 19;
+
+  void incrementWeight() {
+    setState(() {
+      weight = weight + 1;
+    });
+  }
+
+  void decreentWeight() {
+    setState(() {
+      weight = weight - 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -163,12 +174,14 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             RoundIconButton(
-                              FontAwesomeIcons.plus,
+                                icon: FontAwesomeIcons.plus,
+                                handler: incrementWeight),
+                            SizedBox(
+                              width: 10,
                             ),
-                            SizedBox(width: 10),
                             RoundIconButton(
-                              FontAwesomeIcons.minus,
-                            ),
+                                icon: FontAwesomeIcons.minus,
+                                handler: decreentWeight)
                           ],
                         ),
                       ],
@@ -194,13 +207,13 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            RoundIconButton(
-                              FontAwesomeIcons.minus,
-                            ),
-                            SizedBox(width: 10),
-                            RoundIconButton(
-                              FontAwesomeIcons.plus,
-                            ),
+                            // RoundIconButton(
+                            //   FontAwesomeIcons.minus,
+                            // ),
+                            // SizedBox(width: 10),
+                            // RoundIconButton(
+                            //   FontAwesomeIcons.plus,
+                            // ),
                           ],
                         ),
                       ],
@@ -212,27 +225,6 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  const RoundIconButton(this.icon, this.onPressed);
-
-  final IconData icon;
-  final Function onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: () {},
-      child: Icon(icon),
-      constraints: BoxConstraints.tightFor(
-        width: 56,
-        height: 56,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
