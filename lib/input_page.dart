@@ -1,12 +1,16 @@
 import 'package:bmicalculator/resuable_card.dart';
+import 'package:bmicalculator/result_page.dart';
 import 'package:bmicalculator/widgets/build_round_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'constants.dart';
 import 'icon_content.dart';
 
-enum Gender { male, female, other }
+enum Gender {
+  male,
+  female,
+  other,
+}
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -23,13 +27,25 @@ class _InputPageState extends State<InputPage> {
 
   void incrementWeight() {
     setState(() {
-      weight = weight + 1;
+      weight++;
     });
   }
 
   void decreentWeight() {
     setState(() {
-      weight = weight - 1;
+      weight--;
+    });
+  }
+
+  void incrementAge() {
+    setState(() {
+      age++;
+    });
+  }
+
+  void decrementAge() {
+    setState(() {
+      age--;
     });
   }
 
@@ -41,15 +57,28 @@ class _InputPageState extends State<InputPage> {
         centerTitle: true,
         backgroundColor: Color(0xFF1D1E33),
       ),
-      bottomNavigationBar: Container(
-        color: kBottomContainerColour,
-        margin: EdgeInsets.only(top: 10),
-        width: double.infinity,
-        height: kBottomContainerHeight,
-        child: TextButton(
+      bottomNavigationBar: GestureDetector(
+        onTap: () {},
+        child: Container(
+          color: kBottomContainerColour,
+          margin: EdgeInsets.only(top: 10),
+          width: double.infinity,
+          height: kBottomContainerHeight,
+          child: TextButton(
             style: TextButton.styleFrom(foregroundColor: Colors.white),
-            onPressed: () {},
-            child: Center(child: Text("Button"))),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(),
+                ),
+              );
+            },
+            child: Center(
+              child: Text("Button"),
+            ),
+          ),
+        ),
       ),
       body: ListView(
         children: [
@@ -174,14 +203,16 @@ class _InputPageState extends State<InputPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
-                                handler: incrementWeight),
+                              icon: FontAwesomeIcons.plus,
+                              handler: incrementWeight,
+                            ),
                             SizedBox(
                               width: 10,
                             ),
                             RoundIconButton(
-                                icon: FontAwesomeIcons.minus,
-                                handler: decreentWeight)
+                              icon: FontAwesomeIcons.minus,
+                              handler: decreentWeight,
+                            ),
                           ],
                         ),
                       ],
@@ -207,13 +238,17 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // RoundIconButton(
-                            //   FontAwesomeIcons.minus,
-                            // ),
-                            // SizedBox(width: 10),
-                            // RoundIconButton(
-                            //   FontAwesomeIcons.plus,
-                            // ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              handler: incrementAge,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              handler: decrementAge,
+                            ),
                           ],
                         ),
                       ],
