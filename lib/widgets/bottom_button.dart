@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import '../Screen/result_page.dart';
 import '../constants.dart';
 
 class BottomButton extends StatelessWidget {
-  const BottomButton(
-      {super.key, required this.onTap, required this.buttonTitle});
+  const BottomButton({required this.onTap, required this.buttonTitle});
 
   final Function onTap;
   final String buttonTitle;
@@ -20,10 +18,7 @@ class BottomButton extends StatelessWidget {
         height: kBottomContainerHeight,
         child: TextButton(
           style: TextButton.styleFrom(foregroundColor: Colors.white),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ResultsPage()));
-          },
+          onPressed: () {},
           child: Center(
             child: Text(
               buttonTitle,
@@ -35,3 +30,4 @@ class BottomButton extends StatelessWidget {
     );
   }
 }
+
