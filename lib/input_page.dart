@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 import 'icon_content.dart';
+import 'bottom_button.dart';
 
 enum Gender {
   male,
@@ -55,31 +56,18 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
         centerTitle: true,
-        backgroundColor: Color(0xFF1D1E33),
+        backgroundColor: kAppbarColour,
       ),
-      bottomNavigationBar: GestureDetector(
-        onTap: () {},
-        child: Container(
-          color: kBottomContainerColour,
-          margin: EdgeInsets.only(top: 10),
-          width: double.infinity,
-          height: kBottomContainerHeight,
-          child: TextButton(
-            style: TextButton.styleFrom(foregroundColor: Colors.white),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ResultsPage(),
-                ),
-              );
-            },
-            child: Center(
-              child: Text("Button"),
-            ),
-          ),
-        ),
-      ),
+      bottomNavigationBar: BottomButton(
+          buttonTitle: 'CALCULATE',
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ResultsPage(),
+              ),
+            );
+          }),
       body: ListView(
         children: [
           Row(
@@ -263,3 +251,5 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
+
+
