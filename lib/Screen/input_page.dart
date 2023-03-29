@@ -1,11 +1,11 @@
-import 'package:bmicalculator/resuable_card.dart';
-import 'package:bmicalculator/result_page.dart';
+import 'package:bmicalculator/Screen/result_page.dart';
 import 'package:bmicalculator/widgets/build_round_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
-import 'icon_content.dart';
-import 'bottom_button.dart';
+import '../constants.dart';
+import '../widgets/icon_content.dart';
+import '../widgets/bottom_button.dart';
+import 'package:bmicalculator/widgets/resuable_card.dart';
 
 enum Gender {
   male,
@@ -58,16 +58,7 @@ class _InputPageState extends State<InputPage> {
         centerTitle: true,
         backgroundColor: kAppbarColour,
       ),
-      bottomNavigationBar: BottomButton(
-          buttonTitle: 'CALCULATE',
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ResultsPage(),
-              ),
-            );
-          }),
+      bottomNavigationBar: BottomButton(buttonTitle: 'CALCULATE', onTap: () {}),
       body: ListView(
         children: [
           Row(
@@ -251,5 +242,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
-

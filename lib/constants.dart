@@ -23,7 +23,7 @@ const kCalculateButton = TextStyle(
 
 const kTitleTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
-  fontSize: 50,
+  fontSize: 40,
 );
 
 const kResultTextStyle = TextStyle(
