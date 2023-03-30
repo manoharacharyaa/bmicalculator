@@ -1,14 +1,13 @@
 import 'package:bmicalculator/Screen/result_page.dart';
 import 'package:bmicalculator/claculator_brain.dart';
 import 'package:bmicalculator/widgets/build_round_btn.dart';
+import 'package:bmicalculator/widgets/resuable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import '../constants.dart';
-import '../widgets/icon_content.dart';
 import '../widgets/bottom_button.dart';
-import 'package:bmicalculator/widgets/resuable_card.dart';
-import 'package:bmicalculator/main.dart';
-import 'result_page.dart';
+import '../widgets/icon_content.dart';
 
 enum Gender {
   male,
@@ -53,6 +52,20 @@ class _InputPageState extends State<InputPage> {
     });
   }
 
+  void calculateAndRedirect() {
+    CalculatorBrain calc = CalculatorBrain(height, weight);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ResultsPage(
+          bmiResult: calc.calculateBMI(),
+          resultText: calc.getResult(),
+          interpretation: calc.getInterpretation(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,19 +76,7 @@ class _InputPageState extends State<InputPage> {
       ),
       bottomNavigationBar: BottomButton(
         buttonTitle: 'CALCULATE',
-        onTap: () {
-          CalculatorBrain calc = CalculatorBrain(height, weight);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ResultsPage(
-                bmiResult: calc.calculateBMI(),
-                resultText: calc.getResult(),
-                interpretation: calc.getInterpretation(),
-              ),
-            ),
-          );
-        },
+        handler: calculateAndRedirect,
       ),
       body: ListView(
         children: [

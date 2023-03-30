@@ -1,33 +1,29 @@
 import 'package:flutter/material.dart';
+
 import '../constants.dart';
 
 class BottomButton extends StatelessWidget {
-  const BottomButton({required this.onTap, required this.buttonTitle});
+  const BottomButton({required this.handler, required this.buttonTitle});
 
-  final Function onTap;
+  final VoidCallback handler;
   final String buttonTitle;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: handler,
       child: Container(
         color: kBottomContainerColour,
         margin: EdgeInsets.only(top: 10),
         width: double.infinity,
         height: kBottomContainerHeight,
-        child: TextButton(
-          style: TextButton.styleFrom(foregroundColor: Colors.white),
-          onPressed: () {},
-          child: Center(
-            child: Text(
-              buttonTitle,
-              style: kCalculateButton,
-            ),
+        child: Center(
+          child: Text(
+            buttonTitle,
+            style: kCalculateButton,
           ),
         ),
       ),
     );
   }
 }
-

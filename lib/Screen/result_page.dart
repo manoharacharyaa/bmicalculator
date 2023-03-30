@@ -1,6 +1,7 @@
 import 'package:bmicalculator/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:bmicalculator/widgets/resuable_card.dart';
+import 'package:flutter/material.dart';
+
 import '../widgets/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
@@ -60,7 +61,7 @@ class ResultsPage extends StatelessWidget {
             ),
           ),
           BottomButton(
-            onTap: () {
+            handler: () {
               Navigator.pop(context);
             },
             buttonTitle: 'RE-CALCULATE',
